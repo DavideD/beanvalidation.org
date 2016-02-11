@@ -4,7 +4,7 @@ git reset --hard origin/staging
 git clean -fdx
 
 # Remove all generated files and directories
-rake clean
+rake clean[all]
 
 # Make sure there was no update to the used dependencies (if not, this is just a quick version check for Bundler)
 rake setup
