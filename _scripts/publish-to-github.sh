@@ -7,6 +7,8 @@ git clean -fdx
 # Remove all generated files and directories
 rake clean[all]
 
+rake setup
+
 # build site in prod profile
 rake --trace  gen[production]
 
