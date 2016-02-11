@@ -16,8 +16,25 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
+pushd _tmp
+# clone beanvalidation-spec in _tmp if not present
+if [ ! -d "beanvalidation-spec" ];
+then
+  git clone --depth 1 git@github.com:beanvalidation/beanvalidation-spec.git
+fi
+cd beanvalidation-spec 
+git fetch origin
+git reset --hard origin/master
+
+ant all.doc
+
+# Synchronize the content with the latest-draft folder of te site
+rsync -av --delete --exclude ".git" build/en/html_single/ ../../_site/latest-draft/spec/ 
+
+popd
+
+pushd _tmp
 # clone hibernate.github.io in _tmp if not present
-cd _tmp
 if [ ! -d "beanvalidation.github.io" ];
 then
   git clone --depth 1 git@github.com:beanvalidation/beanvalidation.github.io.git
@@ -38,7 +55,6 @@ rsync -av \
 git add .
 if git commit -m "Publish generated site";
 then
-  git push origin master;
+ git push origin master;
 fi
-
-cd ../..
+popd
