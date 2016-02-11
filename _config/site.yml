@@ -23,7 +23,7 @@ profiles:
     disqus_developer: true
     base_url: http://staging.beanvalidation.org/
   production:
-    base_url: http://beanvalidation.org/
+    base_url: http://beanvalidation.github.io/
     deploy:
       host: beanvalidation.org
       path: ~/public_html/topdomain-beanvalidation-org
