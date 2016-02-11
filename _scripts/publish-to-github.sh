@@ -45,7 +45,6 @@ fi
 cd beanvalidation.github.io
 git fetch origin
 git reset --hard origin/master
-git rm -r .
 
 # copy site to git repo, commit and push
 # we filter cache as in production we shouldn't need that data
@@ -54,7 +53,7 @@ rsync -av \
       --filter "- /cache" --filter "- .git" \
       ../../_site/ .
 
-git add .
+git add -A .
 if git commit -m "Publish generated site";
 then
  git push origin master;
