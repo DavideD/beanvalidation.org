@@ -30,7 +30,7 @@ git reset --hard origin/master
 
 ant all.doc
 
-# Synchronize the content with the latest-draft folder of te site
+# Synchronize the content with the latest-draft folder of the site
 rsync -av --delete --exclude ".git" build/en/html_single/ ../../_site/latest-draft/spec/ 
 
 popd
